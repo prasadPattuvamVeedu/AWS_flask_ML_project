@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Credit Risk Estimation</title>
-</head>
-<body class="bg-white">
-
-    <!-- Navbar -->
-    <nav class="bg-cyan-600 px-8 py-4 text-4xl font-semibold text-center text-white">
-        Assess the Credit Risk
-    </nav>
-
+{% extends "base.html" %}
+{% block body %}
     <!-- Horizontal line -->
     <hr class="border-gray-300 my-4">
 
@@ -29,33 +16,79 @@
     {% endwith %}
 </div>
 <div class="container mx-auto">
-    {% block content %}
-   <hi class ="text-2xl font-bold mb-4 text-center">
-    Enter the detail
-   </hi>
-   <form action="/predict" method="post" enctype="multipart/form-data" class="w-full max-w-lg mx auto bg-gray-200 p-6 rounded shadow-md ">
-       <label for ='age' class="font bold text-1xl">
-        Age
-       </label><br>
-       <input type ="numbe" name="age" id="age" class="border p-2 w-full rounded mb-4"><br>
-       <p class = "font-bold">
-        Sex
-       </p>
-       <div class ="mb-4">
-          <label class="mr-4"><input type="radio" name="Sex"  value="male">Male</label>
-          <label class="mr-4"><input type="radio" name="Sex"  value="female">Female</label>
-       </div>
-        <p class="font-bold">Job</p>
-            <div class="mb-4 space-y-1">
-                <label><input type="radio" name="job" value="0"> 0</label><br>
-                <label><input type="radio" name="job" value="1"> 1</label><br>
-                <label><input type="radio" name="job" value="2"> 2</label><br>
-                <label><input type="radio" name="job" value="3"> 3</label>
-            </div>
-   </form>
+   <h1 class ="text-2xl font-bold mb-4 text-center">
+    Enter the detail</h1>
+  <form action="/predict" method="post" enctype="multipart/form-data"
+      class="w-full max-w-lg mx-auto bg-green-300 p-6 rounded shadow-md">
+
+    <label for="Age" class="font-bold text-1xl">Age</label><br>
+    <input type="number" name="Age" id="Age" class="border p-2 w-full rounded mb-4"><br>
+
+    <p class="font-bold">Sex</p>
+    <div class="mb-4">
+        <label class="mr-4"><input type="radio" name="Sex" value="male"> Male</label>
+        <label class="mr-4"><input type="radio" name="Sex" value="female"> Female</label>
+    </div>
+
+    <p class="font-bold">Job</p>
+    <div class="mb-4">
+        <label><input type="radio" name="Job" value="0">0</label><br>
+        <label><input type="radio" name="Job" value="1">1</label><br>
+        <label><input type="radio" name="Job" value="2">2</label><br>
+        <label><input type="radio" name="Job" value="3">3</label>
+    </div>
+
+    <p class="font-bold">Housing</p>
+    <div class="my-6">
+        <label><input type="radio" name="Housing" value="own">own</label>
+        <label><input type="radio" name="Housing" value="free">free</label>
+        <label><input type="radio" name="Housing" value="rent">rent</label>
+    </div>
+
+    <p class="font-bold">Saving Accounts</p>
+    <div class="my-6">
+        <label><input type="radio" name="Saving_accounts" value="little">Little</label><br>
+        <label><input type="radio" name="Saving_accounts" value="moderate">Moderate</label><br>
+        <label><input type="radio" name="Saving_accounts" value="rich">Rich</label><br>
+        <label><input type="radio" name="Saving_accounts" value="quite rich">Quite Rich</label>
+    </div>
+
+    <p class="font-bold">Checking Account</p>
+    <div class="my-6">
+        <label><input type="radio" name="Checking_account" value="little">Little</label><br>
+        <label><input type="radio" name="Checking_account" value="moderate">Moderate</label><br>
+        <label><input type="radio" name="Checking_account" value="rich">Rich</label><br>
+    </div>
+
+    <div class="mb-4">
+        <label class="font-bold">Credit Amount</label>
+        <input type="number" name="Credit_amount" class="border p-2 w-full rounded mb-4"><br>
+    </div>
+
+    <div class="mb-4">
+        <label class="font-bold">Duration</label>
+        <input type="number" name="Duration" class="border p-2 w-full rounded mb-4"><br>
+    </div>
+
+    <p class="font-bold">Purpose</p>
+    <div class="my-6">
+        <label><input type="radio" name="Purpose" value="radio/TV">radio/TV</label><br>
+        <label><input type="radio" name="Purpose" value="education">education</label><br>
+        <label><input type="radio" name="Purpose" value="furniture/equipment">furniture/equipment</label><br>
+        <label><input type="radio" name="Purpose" value="car">car</label><br>
+        <label><input type="radio" name="Purpose" value="business">business</label><br>
+        <label><input type="radio" name="Purpose" value="domestic appliances">domestic appliances</label><br>
+        <label><input type="radio" name="Purpose" value="repairs">repairs</label><br>
+        <label><input type="radio" name="Purpose" value="vacation/others">vacation/others</label><br>
+    </div>
+
+    <input type="submit" value="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 w-full">
+
+    <h2 class="mt-4 text-center">{{result}}</h2>
+
+</form>
+
+
 </div>
+{% endblock %}
 
-
-
-</body>
-</html>
